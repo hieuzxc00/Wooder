@@ -1,0 +1,179 @@
+// css header
+header {
+    --heightHeader: 80px;
+    width: 100%;
+    height: var(--heightHeader);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    &.active {
+        background: $black-cl;
+        transition: 0.3s;
+    }
+    .container-fluid{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo {
+            a{
+                img {
+                    max-width: 177px;
+                    @include mid(true);
+                }
+               .hidden {
+                   display: none;
+               } 
+            }
+        }
+        .menu {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            li {
+                padding-left: 35px;
+                padding-right: 35px;
+                a {
+                    @include text ('pb', var(--fs15), 22.5px, 0.375px, $white-cl, uppercase);
+                    &:hover {
+                    color: $main-cl;
+                    }
+                    &.active {
+                        color: var(--cl-636262);
+                        border-bottom: 2px solid $main-cl;
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+        .right {
+            display: inline-flex;
+            .lang {
+                @include mid(true);
+                position: relative;
+                &__current {
+                    display: inline-flex;
+                    @include text ('pb', var(--fs16), auto, 0.8px, $white-cl, uppercase);
+                    cursor: pointer;
+                    i {
+                        @include mid(true);
+                        margin-left: 5px;
+                        img {
+                            width: 9px;
+                        }
+                    }
+                }
+                &__option {
+                    width: 50px;
+                    height: auto;
+                    background: $white-cl;
+                    position: absolute;
+                    top: 25px;
+                    right: 5px;
+                    text-align: center;
+                    display: none;
+                    cursor: pointer;
+                    &-item {
+                        @include text ('pb', var(--fs16), auto, 0.8px, $white-cl, uppercase);
+                        background: $black-cl;
+                    }
+                }
+
+                &.active {
+                    .lang__option {
+                        display: block;
+                    }
+                }
+            }
+            .btnmenu {
+                display: none;
+                margin-left: 25px;
+                z-index: 300;
+                cursor: pointer;
+                &.change {
+                    .bar1 {
+                        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+                        transform: rotate(-45deg) translate(-9px, 6px);
+                    }
+                    .bar2 {
+                        opacity: 0;
+                    }
+                    .bar3 {
+                        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+                        transform: rotate(45deg) translate(-8px, -8px);
+                    }
+                }
+                div {
+                    width: 35px;
+                    height: 3px;
+                    background-color: $main-cl;
+                    margin: 8px 0;
+                    transition: 0.4s;
+                 }
+            }
+        }
+    }
+
+    .progressbar {
+        width: 0%;
+        height: 3px;
+        background: $main-cl;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        
+    }
+
+    @include md {
+        .container-fluid {
+            .menu {
+                margin-left: 5%;
+            }
+        }
+    }
+
+    @include sm {
+        .container-fluid {
+           .menu {
+               display: none;
+           }
+           .right {
+                    .lang {
+                        &__option {
+                            width: 40px;
+                            top: 30px;
+                            right: 12px;
+                        }
+                    }
+                .btnmenu {
+                    display: block;
+                } 
+           }
+           
+        }
+    }
+    @include xxs {
+        --heightHeader: 60px;
+        .container-fluid {
+            .logo {
+                a {
+                    img {
+
+                    }
+                }
+            }
+            .right {
+                .lang {
+                        &__option {
+                        width: 40px;
+                        top: 30px;
+                        right: 4px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+// css navigator (Menu)
+.nav {
+            width: 100vw;
+            height: 100vh;
+            background-color: $black-cl;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: initial;
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            padding-top: 25%;
+            ul {
+                @include mid(true);
+                flex-direction: column;
+                row-gap: 55px;
+                li {
+                    margin: 30px auto;
+                    a {
+                        @include text ('pb', 25px, 22.5px, 0.375px, $white-cl, uppercase);
+                        &:hover {
+                            color: $main-cl;
+                        }
+                    }
+                }
+            }
+            &.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            @include xxs {
+                ul {
+                    row-gap: 0;
+                    li {
+                        a {
+                            font-size: var(--fs15);
+                        }
+                    }
+                }
+            }
+}
